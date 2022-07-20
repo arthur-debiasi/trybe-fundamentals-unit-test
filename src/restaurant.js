@@ -54,34 +54,59 @@
 
 */
 
-// PASSO 1: Crie uma função `createMenu()` que, recebendo um objeto como parâmetro, retorna esse objeto no seguinte formato: 
+// PASSO 1: Crie uma função `createMenu()` que, recebendo um objeto como parâmetro, retorna esse objeto no seguinte formato:
 //  { fetchMenu: () => objetoPassadoPorParametro }.
+
+// const createMenu = (object) => ({
+//   fetchMenu: () => object,
+// });
+
 //
 // Agora faça o TESTE 4 no arquivo `tests/restaurant.spec.js`.
 
 //------------------------------------------------------------------------------------------
 
 // PASSO 2: Adicione ao objeto retornado por `createMenu()` uma chave de nome `consumption` que, como valor inicial, tem um array vazio.
+
+// const createMenu = (object) => ({
+//   fetchMenu: () => object,
+//   consumption: [],
+// });
 //
 // Agora faça o TESTE 5 no arquivo `tests/restaurant.spec.js`.
 
 //------------------------------------------------------------------------------------------
 
-// PASSO 3: Crie uma função, separada da função `createMenu()`, que, ao receber uma string como parâmetro, 
+// PASSO 3: Crie uma função, separada da função `createMenu()`, que, ao receber uma string como parâmetro,
 // adiciona essa string ao array de `objetoRetornado.consumption`. Essa nova função será adicionada à chave `order`.
-// 
-// DICA PARA DESENVOLVIMENTO: 
+//
+// DICA PARA DESENVOLVIMENTO:
 // - Definir a função `createMenu()`
-// - Definir o objeto que a `createMenu()` retorna, mas separadamente 
+// - Definir o objeto que a `createMenu()` retorna, mas separadamente
 // - E depois, definir essa nova função que será atribuída a `order`.
 // ```
 // const restaurant = {}
 //
 // const createMenu = (myMenu) => // Lógica que edita o objeto `restaurant`
 //
-// const orderFromMenu = (request) => // Lógica que adiciona à chave `consumption` de `restaurant` a string recebida no parâmetro `request`. 
+// const orderFromMenu = (request) => // Lógica que adiciona à chave `consumption` de `restaurant` a string recebida no parâmetro `request`.
 // // Essa função deve ser associada à chave `order` de `restaurant`
 // ```
+// const createMenu = (object) => {
+//   const objReturn = {
+//   fetchMenu: () => object,
+//   consumption: [],
+//   order: (request) => objReturn.consumption.push(request),
+//   };
+//   return objReturn;
+// };
+// const objetoQualquer = {
+//   food: { coxinha: 3.90, sanduiche: 9.90 },
+//   drinks: { agua: 3.90, cerveja: 6.90 },
+// };
+// const menu = createMenu(objetoQualquer);
+// console.log(menu.order('coxinha'));
+// console.log(createMenu(objetoQualquer).consumption);
 // Agora faça o TESTE 6 no arquivo `tests/restaurant.spec.js`.
 
 //------------------------------------------------------------------------------------------
@@ -93,6 +118,77 @@
 // - retornará o valor somado acrescido de 10%.
 // DICA: para isso, você precisará percorrer tanto o objeto da chave `food` quanto o objeto da chave `drink`.
 
-const createMenu = () => {};
+// const foodDrink = (foods, drinks, item) => {
+//   let sum = 0;
+//   for (const food of foods) {
+//     if (item === food[0]) {
+//       sum += food[1];
+//     }
+//   }
+//   for (const drink of drinks) {
+//     if (item === drink[0]) {
+//       sum += drink[1];
+//     }
+//   }
+//   return sum;
+// }
+
+// const foodDrink = (foods, drinks, item, object) => {
+//   let sum = 0;
+//   if (foods.includes(item)) {
+//     console.log(object.food[item]);
+//     sum += object.food[item];
+//   }
+//   if (drinks.includes(item)) {
+//     console.log(object.drinks[item]);
+//     sum += object.drinks[item];
+//   }
+// // console.log('foods', foods);
+// // console.log('item', item);
+//   return sum;
+// };
+
+const createMenu = (object) => {
+  const objReturn = {
+    fetchMenu: () => object,
+    consumption: [],
+    order: (request) => objReturn.consumption.push(request),
+    // Aqui o Ronald me ajudou a refatorar minha função, que estava funcionando corretamente, para que sua complexidade fosse reduzida de 11. Eu estava utilizando condicionais if aninhados em laços for aninhados em outro laço for.
+    pay: () => {
+      let sum = 0;
+      const foods = Object.keys(object.food);
+      const drinks = Object.keys(object.drinks);
+      const consumptionItems = objReturn.consumption;
+      for (const item of consumptionItems) {
+        if (foods.includes(item)) {
+          console.log(object.food[item]);
+          sum += object.food[item];
+        }
+        if (drinks.includes(item)) {
+          console.log(object.drinks[item]);
+          sum += object.drinks[item];
+        }
+        // console.log('foods', foods);
+        // console.log('item', item);
+      }
+      return sum;
+    },
+  };
+  return objReturn;
+};
+const objetoQualquer = {
+  food: { coxinha: 3.9, sanduiche: 9.9 },
+  drinks: { agua: 3.9, cerveja: 6.9 },
+};
+// const food = Object.entries(objetoQualquer.food);
+// const drinks = Object.entries(objetoQualquer.drinks);
+// console.log(food);
+// console.log(drinks);
+const menu = createMenu(objetoQualquer);
+menu.order('coxinha');
+menu.order('coxinha');
+menu.order('agua');
+
+console.log(menu.pay());
 
 module.exports = createMenu;
