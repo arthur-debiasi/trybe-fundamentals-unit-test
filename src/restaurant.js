@@ -161,7 +161,7 @@ const createMenu = (object) => {
         // console.log('foods', foods);
         // console.log('item', item);
       }
-      return sum;
+      return sum * 1.1;
     },
   };
   return objReturn;

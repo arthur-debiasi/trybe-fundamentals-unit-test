@@ -139,7 +139,7 @@ describe('10 - Implemente os casos de teste e a função `createMenu`', () => {
     menu4.order('coxinha');
     menu4.order('agua');
     menu4.order('coxinha');
-    expect(menu4.pay()).toEqual(11.7) // Retorno: somaDosPreçosDosPedidos
+    expect(menu4.pay()).toBeCloseTo(12.87) // Retorno: somaDosPreçosDosPedidos
     // ```
   
     // Agora faça o PASSO 4 no arquivo `src/restaurant.js`.
