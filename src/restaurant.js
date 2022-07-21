@@ -55,23 +55,13 @@
 */
 
 // PASSO 1: Crie uma função `createMenu()` que, recebendo um objeto como parâmetro, retorna esse objeto no seguinte formato:
-//  { fetchMenu: () => objetoPassadoPorParametro }.
 
-// const createMenu = (object) => ({
-//   fetchMenu: () => object,
-// });
-
-//
 // Agora faça o TESTE 4 no arquivo `tests/restaurant.spec.js`.
 
 //------------------------------------------------------------------------------------------
 
 // PASSO 2: Adicione ao objeto retornado por `createMenu()` uma chave de nome `consumption` que, como valor inicial, tem um array vazio.
 
-// const createMenu = (object) => ({
-//   fetchMenu: () => object,
-//   consumption: [],
-// });
 //
 // Agora faça o TESTE 5 no arquivo `tests/restaurant.spec.js`.
 
@@ -161,11 +151,11 @@ const createMenu = (object) => {
       const consumptionItems = objReturn.consumption;
       for (const item of consumptionItems) {
         if (foods.includes(item)) {
-          console.log(object.food[item]);
+          // console.log(object.food[item]);
           sum += object.food[item];
         }
         if (drinks.includes(item)) {
-          console.log(object.drinks[item]);
+          // console.log(object.drinks[item]);
           sum += object.drinks[item];
         }
         // console.log('foods', foods);
@@ -176,19 +166,19 @@ const createMenu = (object) => {
   };
   return objReturn;
 };
-const objetoQualquer = {
-  food: { coxinha: 3.9, sanduiche: 9.9 },
-  drinks: { agua: 3.9, cerveja: 6.9 },
-};
+// const objetoQualquer = {
+//   food: { coxinha: 3.9, sanduiche: 9.9 },
+//   drinks: { agua: 3.9, cerveja: 6.9 },
+// };
 // const food = Object.entries(objetoQualquer.food);
 // const drinks = Object.entries(objetoQualquer.drinks);
 // console.log(food);
 // console.log(drinks);
-const menu = createMenu(objetoQualquer);
-menu.order('coxinha');
-menu.order('coxinha');
-menu.order('agua');
+// const menu = createMenu(objetoQualquer);
+// menu.order('coxinha');
+// menu.order('coxinha');
+// menu.order('agua');
 
-console.log(menu.pay());
+// console.log(menu.pay());
 
 module.exports = createMenu;
