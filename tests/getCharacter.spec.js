@@ -70,9 +70,9 @@ describe('9 - Implemente os casos de teste da função `getCharacter`', () => {
     }
     expect(getCharacter('Melissandre')).toEqual(melissandreReturn);
     // Teste se o parâmetro não é Case Sensitive, ou seja, independente de conter letras maiúsculas ou minúsculas retorna o mesmo objeto relativo a ele.
-    expect(getCharacter('arya')).toEqual(ayraReturn);
-    expect(getCharacter('brienne')).toEqual(brienneReturn);
-    expect(getCharacter('melissandre')).toEqual(melissandreReturn);
+    expect(getCharacter('aRyA')).toEqual(ayraReturn);
+    expect(getCharacter('briEnNe')).toEqual(brienneReturn);
+    expect(getCharacter('meLisSanDre')).toEqual(melissandreReturn);
     // Teste se ao passar um nome que não está na tabela, a função retorna undefined.
     expect(getCharacter('Arthur')).toBeUndefined();
   });
