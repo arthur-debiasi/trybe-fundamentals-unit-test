@@ -77,3 +77,5 @@ describe('9 - Implemente os casos de teste da função `getCharacter`', () => {
     expect(getCharacter('Arthur')).toBeUndefined();
   });
 });
+
+// O matcher toStrictEqual me foi sugerido pelo colega Richard, pois discutimos sobre e achamos mais adequado e profunto que toEqual
