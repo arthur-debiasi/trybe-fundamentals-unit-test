@@ -1,1 +1,11 @@
 node_modules/
+tests/coverage/clover.xml
+tests/coverage/coverage-final.json
+tests/coverage/lcov.info
+tests/coverage/lcov-report/base.css
+tests/coverage/lcov-report/block-navigation.js
+tests/coverage/lcov-report/index.html
+tests/coverage/lcov-report/prettify.css
+tests/coverage/lcov-report/prettify.js
+tests/coverage/lcov-report/sort-arrow-sprite.png
+tests/coverage/lcov-report/sorter.js
